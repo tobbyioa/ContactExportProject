@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/contactSearch"
+        android:icon="@drawable/icons8_search_36"
+        android:title="@string/search_menu_title"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView" />
+    <item
+    android:id="@+id/contact_export_csv"
+    android:title="@string/contact_export_csv"
+    android:icon="@drawable/icons8_csv_36"
+    app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_export_xl"
+        android:title="@string/contact_export_excel"
+        android:icon="@drawable/icons8_microsoft_excel_36"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_export_vcf"
+        android:title="@string/contact_export_vcf"
+        android:icon="@drawable/vcf_file_symbol32"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_export_xml"
+        android:title="@string/contact_export_xml"
+        android:icon="@drawable/icons8_xml_48"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_export_json"
+        android:title="@string/contact_export_json"
+        android:icon="@drawable/icons8_json_48"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_settings"
+        android:title="@string/contact_export_settings"
+        android:icon="@drawable/icons8_settings_36"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_help"
+        android:title="@string/contact_export_help"
+        android:icon="@drawable/icons8_help_36"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/contact_info"
+        android:title="@string/contact_export_info"
+        android:icon="@drawable/icons8_info_36"
+        app:showAsAction="ifRoom" />
+</menu>

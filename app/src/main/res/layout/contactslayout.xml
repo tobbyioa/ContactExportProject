@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <!--android:paddingBottom="16dp"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:paddingTop="16dp"-->
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:id="@+id/contactView"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonCSV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icons8_csv_48"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonJSON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icons8_json_48"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonXML"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icons8_xml_48"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonXL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icons8_microsoft_excel_48"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:tooltipText="@string/export_float_button_tooltip"
+        android:src="@drawable/floating_button_icon"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="standard_12">12dp</dimen>
+    <dimen name="standard_23">23dp</dimen>
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_105">105dp</dimen>
+    <dimen name="standard_155">155dp</dimen>
+    <dimen name="standard_100">100dp</dimen>
+    <dimen name="standard_110">110dp</dimen>
+    <dimen name="standard_145">145dp</dimen>
+    <dimen name="standard_165">165dp</dimen>
+    <dimen name="standard_65">65dp</dimen>
+    <dimen name="standard_130">130dp</dimen>
+    <dimen name="standard_140">140dp</dimen>
+    <dimen name="standard_195">195dp</dimen>
+    <dimen name="standard_260">260dp</dimen>
+    <dimen name="standard_205">205dp</dimen>
+</resources>

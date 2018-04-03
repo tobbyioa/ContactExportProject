@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:paddingBottom="16dp"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:paddingTop="16dp">-->
+
+    <android.support.design.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:id="@+id/recyclerView"/>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonDeleteSweep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_delete_sweep_white_18dp"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+    <android.support.design.widget.FloatingActionButton
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        android:id="@+id/floatingActionButtonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:src="@drawable/ic_delete_forever_white_18dp" android:focusable="true"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButtonShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_share_white_18dp"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/floating_button_icon_white"
+        app:backgroundTint="@color/primary_blue"
+        app:fabSize="normal"
+        app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+</android.support.design.widget.CoordinatorLayout>
+    <!--android:layout_gravity="bottom|end"-->
+<!--</RelativeLayout>-->

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="pressed_color">#D3D3D3</color>
+    <color name="default_color">#F8F8F8</color>
+    <color name="selected_overlay">#88673AB7</color>
+    <color name="selected_overlay_test"> #673AB7</color>
+    <color name="selected_overlay_blue"> #888cbfd9</color>
+    <color name="primary_blue_dark">#2d6988</color>
+    <color name="primary_blue">#539fc6</color>
+    <color name="primary_gray">#8d8d8d</color>
+
+</resources>
