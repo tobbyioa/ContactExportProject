@@ -39,36 +39,27 @@ public class ContactAdapter extends SelectableAdapter<ContactAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(ContactAdapter.ViewHolder holder, int position) {
-        //ContactObject item = data.get(position);
         data.moveToPosition(position);
         String pd = null;
         ContactObject item = new ContactObject();
         item.set_ID(data.getString( data.getColumnIndexOrThrow(ContactsContract.Data._ID)));
         item.set_lookUpKey(data.getString(data.getColumnIndexOrThrow(ContactsContract.Contacts.LOOKUP_KEY)));
-        // item = retrieveLookUpKey(context,item);
         if(Util.hasHoneycomb()){
             item.set_displayName(data.getString( data.getColumnIndexOrThrow(ContactsContract.Data.DISPLAY_NAME_PRIMARY)));
         }else{
             item.set_displayName(data.getString( data.getColumnIndexOrThrow(ContactsContract.Data.DISPLAY_NAME)));
         }
 
-        if (Util.hasHoneycomb()) {
-            pd = (data.getString(data.getColumnIndexOrThrow(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
+        holder.contactName.setText(item.get_displayName());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            pd = (data.getString(data.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
             // Otherwise, sets the thumbnail column to the _ID column
+        } else {
+            pd = data.getString(data.getColumnIndex(ContactsContract.Data._ID));
         }
-        else {
-            pd = data.getString(data.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
-        }
-
         item.set_photoUri(pd);
-
-        int id = Integer.parseInt(item.get_ID());
-        String lookUpKey = item.get_lookUpKey();
-        String displayName = item.get_displayName();
-
-        holder.contactName.setText(displayName);
-        //holder.exportIcon.setVisibility(View.VISIBLE);
-
+       // QuickContactBadge badgeSmall = (QuickContactBadge) view.findViewById(R.id.quickContactBadge);
         if(item.get_photoUri() != null) {
             Uri photo_uri = Uri.parse(item.get_photoUri());
 
@@ -76,16 +67,8 @@ public class ContactAdapter extends SelectableAdapter<ContactAdapter.ViewHolder>
             holder.badge.setImageURI(photo_uri);
             // badgeSmall.setImageBitmap(mThumbnail);
             holder.badge.setMode(ContactsContract.QuickContact.MODE_LARGE);
-
-            holder.badge.assignContactUri(ContactsContract.Contacts.getLookupUri(id, lookUpKey));
         }
-//        else{
-//           String defaultValue =  String.valueOf(R.drawable.user_96);
-//            Bitmap mThumbnail = loadContactPhotoThumbnail(defaultValue);
-//            holder.badge.setMode(ContactsContract.QuickContact.MODE_LARGE);
-//            holder.badge.setImageBitmap(mThumbnail);
-//        }
-
+        holder.badge.assignContactUri(ContactsContract.Contacts.getLookupUri(Integer.parseInt(item.get_ID()), item.get_lookUpKey()));
 
         // Span the item if active
         final ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
@@ -204,9 +187,7 @@ public class ContactAdapter extends SelectableAdapter<ContactAdapter.ViewHolder>
             // Creates a holder for the URI.
             Uri thumbUri;
             // If Android 3.0 or later
-            if (Build.VERSION.SDK_INT
-                    >=
-                    Build.VERSION_CODES.HONEYCOMB) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                 // Sets the URI from the incoming PHOTO_THUMBNAIL_URI
                 thumbUri = Uri.parse(photoData);
             } else {

@@ -1,8 +1,11 @@
 package com.webaholics.olufemiisola.contactexport;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,12 +14,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.webaholics.olufemiisola.contactexport.ExportedItemsAdapter.ViewHolder.ClickListener;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExportedItemsActivity extends AppCompatActivity implements ClickListener {
@@ -35,27 +42,22 @@ public class ExportedItemsActivity extends AppCompatActivity implements ClickLis
     FloatingActionButton deleteFab;
     FloatingActionButton deleteSweepFab;
     boolean isFABOpen = false;
+    private  List<ExportedItem> entries;
+    List<ExportedItem>  selectedItems;
+    List<String>  mimes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exported_items);
         mrc_view =  (RecyclerView) findViewById(R.id.recyclerView);
-//        mrc_view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v)
-//            {
-//
-//
-//            }
-//        });
-
-
 
         //Instantiate and set adapter here
         String WebaholicsFolder = "ContactExport";
-        List<ExportedItem> entries = Util.getExportedItems(Environment.getExternalStorageDirectory().getPath()+"/"+WebaholicsFolder);
+        entries = Util.getExportedItems(Environment.getExternalStorageDirectory().getPath()+"/"+WebaholicsFolder);
         rc_adapter = new ExportedItemsAdapter(entries, this, this);
+        this.selectedItems = new ArrayList<ExportedItem>();
+        this.mimes = new ArrayList<String>();
         mrc_view.setAdapter(rc_adapter);
 
         mrc_view.setHasFixedSize(true);
@@ -77,13 +79,42 @@ public class ExportedItemsActivity extends AppCompatActivity implements ClickLis
                 }
             }
         });
+
+        shareFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "Sharing....", Toast.LENGTH_SHORT).show();
+                if(selectedItems.isEmpty()){
+                    Toast.makeText(getBaseContext(), "No File Selected for export", Toast.LENGTH_SHORT).show();
+                }else {
+                    ArrayList<Uri> imageUris = new ArrayList<Uri>();
+                    for(int i = 0;i < selectedItems.size();i++)
+                    {
+                        Uri imageUri = Uri.fromFile(new File(selectedItems.get(i).get_path()));
+                        imageUris.add(imageUri); // Add your image URIs here
+                    }
+                    Intent shareIntent = new Intent();
+                    shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+                    shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+                    shareIntent.setType(selectedItems.get(0).getMimeType());
+                    startActivity(Intent.createChooser(shareIntent, "Share images to.."));
+                    //Toast.makeText(getBaseContext(), "CSV Export Complete", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        hideFloatingActionButton(shareFab);
     }
     private void showFABMenu(){
+
         isFABOpen=true;
-        shareFab.animate().translationY(-getResources().getDimension(R.dimen.standard_65));
+        if(FloatingActionButtonHideStatus(shareFab)) {
+            4
+            zshareFab.animate().translationY(-getResources().getDimension(R.dimen.standard_65));
+            a7qqqqqqqqqq7212        }
         deleteFab.animate().translationY(-getResources().getDimension(R.dimen.standard_130));
         deleteSweepFab.animate().translationY(-getResources().getDimension(R.dimen.standard_195));
     }
+
 
     private void closeFABMenu(){
         isFABOpen=false;
@@ -121,23 +152,83 @@ public class ExportedItemsActivity extends AppCompatActivity implements ClickLis
      */
     private void toggleSelection(int position) {
         rc_adapter.toggleSelection(position);
+
         int count = rc_adapter.getSelectedItemCount();
 
         if (count == 0) {
             if(isFABOpen){
                 closeFABMenu();
             }
+            selectedItems.clear();
+            mimes.clear();
             actionMode.finish();
         } else {
+
+            selectedItems.clear();
+            mimes.clear();
+            for(int i = 0;i < rc_adapter.getSelectedItems().size();i++){
+                ExportedItem item = entries.get(position);
+                selectedItems.add(item);
+                mimes.add(item.getMimeType());
+            }
 
             actionMode.setTitle(String.valueOf(count)+" item(s) selected");
             if(!isFABOpen){
                 showFABMenu();
             }
+            if(selectedItems.size() < 1){
+                hideFloatingActionButton(shareFab);
+            }else if(selectedItems.size() == 1){
+                showFloatingActionButton(shareFab);
+            }else{
+                hideFloatingActionButton(shareFab);
+            }
+
+            if(Util.isListContainMethod(mimes,mimes.get(0))){
+                showFloatingActionButton(shareFab);
+            }else{
+                hideFloatingActionButton(shareFab);
+            }
+
             actionMode.invalidate();
         }
     }
 
+    private void hideFloatingActionButton(FloatingActionButton fab) {
+        CoordinatorLayout.LayoutParams params =
+                (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        FloatingActionButton.Behavior behavior =
+                (FloatingActionButton.Behavior) params.getBehavior();
+
+        if (behavior != null) {
+            behavior.setAutoHideEnabled(false);
+        }
+
+        fab.hide();
+    }
+
+    private void showFloatingActionButton(FloatingActionButton fab) {
+        fab.show();
+        CoordinatorLayout.LayoutParams params =
+                (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        FloatingActionButton.Behavior behavior =
+                (FloatingActionButton.Behavior) params.getBehavior();
+
+        if (behavior != null) {
+            behavior.setAutoHideEnabled(true);
+        }
+    }
+
+    private boolean FloatingActionButtonHideStatus (FloatingActionButton fab) {
+        fab.show();
+        CoordinatorLayout.LayoutParams params =
+                (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        FloatingActionButton.Behavior behavior =
+                (FloatingActionButton.Behavior) params.getBehavior();
+
+       return  behavior.isAutoHideEnabled();
+
+    }
     private class ActionModeCallback implements ActionMode.Callback {
         @SuppressWarnings("unused")
         private final String TAG = ActionModeCallback.class.getSimpleName();

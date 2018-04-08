@@ -13,10 +13,11 @@
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp">
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:scrollbars="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -57,10 +58,23 @@
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"
         android:src="@drawable/ic_share_white_18dp"
         app:backgroundTint="@color/primary_blue"
         app:fabSize="normal"
         app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/floatingActionPickFile"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:clickable="true"-->
+        <!--android:focusable="true"-->
+        <!--android:src="@drawable/open_48_white"-->
+        <!--app:backgroundTint="@color/primary_blue"-->
+        <!--app:fabSize="normal"-->
+        <!--app:layout_behavior="com.webaholics.olufemiisola.contactexport.ScrollAwareFABehaviour" />-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -68,6 +82,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"
+
         android:focusable="true"
         android:src="@drawable/floating_button_icon_white"
         app:backgroundTint="@color/primary_blue"

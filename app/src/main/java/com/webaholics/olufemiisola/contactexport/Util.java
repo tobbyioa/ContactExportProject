@@ -187,25 +187,30 @@ public class Util {
                 String ext =  files[i].getAbsolutePath().substring(files[i].getAbsolutePath().lastIndexOf("."));
                 fileItem.set_extension(ext);
                 int drawable = R.drawable.icons8_find_user_male_48;
+                String mimeType = "";
                 switch (ext){
                     case ".json":
                         drawable = R.drawable.icons8_json_48;
-
+                        mimeType = String.valueOf(R.string.JSON);
                         break;
                     case ".xml":
                         drawable = R.drawable.icons8_xml_48;
+                        mimeType = String.valueOf(R.string.XML);
                         break;
                     case ".csv":
                         drawable = R.drawable.icons8_csv_48;
+                        mimeType = String.valueOf(R.string.CSV);
                         break;
                     case".xl":
                         drawable = R.drawable.icons8_microsoft_excel_48;
+                        mimeType = String.valueOf(R.string.XL);
                         break;
                     default:
                         drawable = R.drawable.icons8_find_user_male_48;
                         break;
                 }
                 fileItem.set_drawableIcon(drawable);
+                fileItem.setMimeType(mimeType);
                 filesList.add(fileItem);
             }
         }
@@ -230,25 +235,30 @@ public class Util {
                 String ext =  files[i].getAbsolutePath().substring(files[i].getAbsolutePath().lastIndexOf("."));
                 fileItem.set_extension(ext);
                 int drawable = R.drawable.icons8_find_user_male_48;
+                String mimeType = "";
                 switch (ext){
                     case ".json":
                         drawable = R.drawable.icons8_json_48;
-
+                        mimeType = "application/json";
                         break;
                     case ".xml":
                         drawable = R.drawable.icons8_xml_48;
+                        mimeType = "application/xml";
                         break;
                     case ".csv":
                         drawable = R.drawable.icons8_csv_48;
+                        mimeType ="text/csv";
                         break;
                     case".xl":
                         drawable = R.drawable.icons8_microsoft_excel_48;
+                        mimeType = "" ;
                         break;
                     default:
                         drawable = R.drawable.icons8_find_user_male_48;
                         break;
                 }
                 fileItem.set_drawableIcon(drawable);
+                fileItem.setMimeType(mimeType);
                 filesList.add(fileItem);
             }
         }
@@ -283,6 +293,15 @@ public class Util {
             }
         }
         return  "";
+    }
+
+    public static boolean isListContainMethod(List<String> arraylist,String string) {
+        for (String str : arraylist) {
+            if (!str.equalsIgnoreCase("string")) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

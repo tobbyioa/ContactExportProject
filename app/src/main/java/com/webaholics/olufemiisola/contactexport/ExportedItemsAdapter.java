@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,8 @@ public class ExportedItemsAdapter extends SelectableAdapter<ExportedItemsAdapter
     private List<ExportedItem> data;
     private Context context;
     private int selectedItem = 0;
-    private SparseBooleanArray selectedItems;
 
+    private SparseBooleanArray selectedItems;
     private ViewHolder.ClickListener clickListener;
 
 
@@ -40,7 +41,6 @@ public class ExportedItemsAdapter extends SelectableAdapter<ExportedItemsAdapter
         public ImageButton share;
         View selectedOverlay;
         private ClickListener listener;
-
 
 
         public ViewHolder(View itemView, ClickListener listener) {
@@ -74,17 +74,12 @@ public class ExportedItemsAdapter extends SelectableAdapter<ExportedItemsAdapter
             return false;
         }
 
-
         public interface ClickListener {
             public void onItemClicked(int position);
             public boolean onItemLongClicked(int position);
         }
 
-
-
     }
-
-
 
 //    @Override
 //    public void onBindViewHolder(ViewHolder holder, int position, List<Object> payloads) {
@@ -197,7 +192,6 @@ public class ExportedItemsAdapter extends SelectableAdapter<ExportedItemsAdapter
         holder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
 
     }
-
     @Override
     public int getItemCount() {
         return data.size();

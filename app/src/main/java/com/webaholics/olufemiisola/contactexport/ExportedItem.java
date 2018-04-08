@@ -11,6 +11,16 @@ public class ExportedItem {
     private  String _extension;
     private int _sizeKB ;
     private boolean active;
+    private String mimeType;
+
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+
 
     public String get_name() {
         return _name;

@@ -24,6 +24,7 @@ public class ExportItem extends ConstraintLayout{
     private ImageView exportIcon;
     private TextView text;
     private ImageButton share;
+    private String mimeType;
 
     public ExportItem(Context context, AttributeSet attrs, int defStyleAttr) {
 
@@ -42,7 +43,13 @@ public class ExportItem extends ConstraintLayout{
         this.setShare((ImageButton) findViewById(R.id.fileShareBtn));
     }
 
+    public String getMimeType() {
+        return mimeType;
+    }
 
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
 
     public ImageView getFileType() {
         return fileType;

@@ -21,4 +21,10 @@
     <string name="selected_count">%1s selected</string>
     <string name="placeholder">Placeholder View</string>
     <string name="export_float_button_tooltip">Click for export options</string>
+
+    <string name="JSON">application/json</string>
+    <string name="XML">application/xml</string>
+    <string name="CSV">text/csv</string>
+    <string name="XL">application/vnd.ms-excel</string>
+
 </resources>

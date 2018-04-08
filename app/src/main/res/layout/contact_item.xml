@@ -36,25 +36,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lookUpKey"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <QuickContactBadge
+        android:id="@+id/Badge"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user_96" />
+
     <View
         android:id="@+id/contact_selected_overlay"
-        android:layout_width="364dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/selected_overlay_blue"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <QuickContactBadge
-        android:id="@+id/Badge"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user_96" />
+
 </android.support.constraint.ConstraintLayout>
